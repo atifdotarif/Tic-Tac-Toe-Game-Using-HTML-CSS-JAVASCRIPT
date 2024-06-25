@@ -33,30 +33,35 @@ boxes.forEach((box) => {
     for (let i = 0; i < 10; i++) {
       box.disabled = false;
     }
-    document.querySelector(".result").innerText = "";
   });
 });
+
+let newgame = document.querySelector("#newGame");
+boxes.forEach((box) => {
+  newgame.addEventListener("click", () => {
+    document.querySelector(".head").classList.add("hide");
+    for (let i = 0; i < 10; i++) {
+      box.innerText = "";
+    }
+    for (let i = 0; i < 10; i++) {
+      box.disabled = false;
+    }
+  });
+});
+
 let countX = 0;
 let countO = 0;
 function checkResult() {
   for (let i = 0; i < 8; i++) {
-    countX = 0;
-    countO = 0;
-    for (let j = 0; j < 3; j++) {
-      if (boxes[win[i][j]].innerText === "X") {
-        countX++;
-      } else if (boxes[win[i][j]].innerText === "O") {
-        countO++;
-      }
-    }
-    if (countX === 3) {
-      document.querySelector(".result").innerText = "X Wins!";
-      alert("X win!");
-      return;
-    } else if (countO === 3) {
-      document.querySelector(".result").innerText = "O Wins!";
-      alert("O win!");
+    let sym = boxes[win[i][0]].innerText;
+    if(boxes[win[i][0]].innerText!=""&&boxes[win[i][1]].innerText!=""&&boxes[win[i][2].innerText]!="")
+    if (
+      sym===boxes[win[i][1]].innerText && boxes[win[i][2]].innerText ===boxes[win[i][0]].innerText 
+    ) {
+      document.querySelector(".hide").classList.remove("hide");
+      document.querySelector("#winner").innerText = 'Congratulations, '+ sym +' Wins!';
       return;
     }
+
   }
 }

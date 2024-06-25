@@ -41,11 +41,13 @@ h1{
     font-size: 9vmin;
     text-decoration: bold;
 }
-.endbtns{
-    display: flex;
-    justify-content: space-between;
+h2{
+    font-size: 6vmin;
+    background-color: rgb(203, 242, 203);
+    color: green;
+    padding: 2vmin;
 }
-.reset,.result{
+.reset,#newGame{
     height: 8vh;
     width: 14.5vw;
     font-size: 6vmin;
@@ -54,12 +56,22 @@ h1{
     color: white;
     text-decoration: bold;
 }
-.result{
-    position: sticky;
-}
 .reset:hover{
     background-color: #9112aa;
 }
-.result:hover{
+#newGame:hover{
     background-color: #9112aa;
+}
+.head{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;  
+    
+}
+#hideID{
+    height:100vh;
+       
+}
+.hide{
+    display: none;    
 }
