@@ -39,6 +39,7 @@ boxes.forEach((box) => {
 let newgame = document.querySelector("#newGame");
 boxes.forEach((box) => {
   newgame.addEventListener("click", () => {
+    reset.disabled = false;
     document.querySelector(".head").classList.add("hide");
     for (let i = 0; i < 10; i++) {
       box.innerText = "";
@@ -54,14 +55,23 @@ let countO = 0;
 function checkResult() {
   for (let i = 0; i < 8; i++) {
     let sym = boxes[win[i][0]].innerText;
-    if(boxes[win[i][0]].innerText!=""&&boxes[win[i][1]].innerText!=""&&boxes[win[i][2].innerText]!="")
     if (
-      sym===boxes[win[i][1]].innerText && boxes[win[i][2]].innerText ===boxes[win[i][0]].innerText 
-    ) {
-      document.querySelector(".hide").classList.remove("hide");
-      document.querySelector("#winner").innerText = 'Congratulations, '+ sym +' Wins!';
-      return;
-    }
-
+      boxes[win[i][0]].innerText != "" &&
+      boxes[win[i][1]].innerText != "" &&
+      boxes[win[i][2].innerText] != ""
+    )
+      if (
+        sym === boxes[win[i][1]].innerText &&
+        boxes[win[i][2]].innerText === boxes[win[i][0]].innerText
+      ) {
+        document.querySelector(".hide").classList.remove("hide");
+        document.querySelector("#winner").innerText =
+          "Congratulations, " + sym + " Wins!";
+        for (let box of boxes) {
+          box.disabled = true;
+        }
+        reset.disabled = true;
+        return;
+      }
   }
 }
