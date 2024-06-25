@@ -36,8 +36,7 @@ h1{
     width: 8vw; 
     border-radius: 5vmin;
     border: 0.2vmin solid #8d5a97;
-    background-color: white;
-    color:#8d5a97;
+    background-color: white;   
     font-size: 9vmin;
     text-decoration: bold;
 }
@@ -69,8 +68,7 @@ h2{
     
 }
 #hideID{
-    height:100vh;
-       
+    height:100vh;     
 }
 .hide{
     display: none;    

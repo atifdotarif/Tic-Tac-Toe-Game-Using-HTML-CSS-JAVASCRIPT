@@ -1,5 +1,6 @@
 let boxes = document.querySelectorAll(".box");
 let turnX = true;
+let count = 0;
 let win = [
   [0, 1, 2],
   [3, 4, 5],
@@ -13,20 +14,32 @@ let win = [
 
 boxes.forEach((box) => {
   box.addEventListener("click", () => {
+    count++;
     if (turnX) {
       turnX = false;
       box.innerText = "X";
+      box.style.color = "aqua";
     } else {
       turnX = true;
       box.innerText = "O";
+      box.style.color = "#becf00";
     }
     box.disabled = true;
+    if (count === 9) {
+      document.querySelector(".hide").classList.remove("hide");
+      document.querySelector("#winner").innerText = "Draw!";
+      for (let box of boxes) {
+        box.disabled = true;
+      }
+      reset.disabled = true;
+    }
     checkResult();
   });
 });
 let reset = document.querySelector(".reset");
 boxes.forEach((box) => {
   reset.addEventListener("click", () => {
+    count = 0;
     for (let i = 0; i < 10; i++) {
       box.innerText = "";
     }
@@ -39,7 +52,9 @@ boxes.forEach((box) => {
 let newgame = document.querySelector("#newGame");
 boxes.forEach((box) => {
   newgame.addEventListener("click", () => {
+    count = 0;
     reset.disabled = false;
+    turnX = true;
     document.querySelector(".head").classList.add("hide");
     for (let i = 0; i < 10; i++) {
       box.innerText = "";
@@ -49,9 +64,6 @@ boxes.forEach((box) => {
     }
   });
 });
-
-let countX = 0;
-let countO = 0;
 function checkResult() {
   for (let i = 0; i < 8; i++) {
     let sym = boxes[win[i][0]].innerText;
